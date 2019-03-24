@@ -6,7 +6,9 @@
  * Time: 7:55 PM
  */
 
-namespace Bioudi\LaravelWeather;
+namespace Bioudi\LaravelMetaWeatherApi;
+
+use Bioudi\LaravelWeather\Weather;
 use Illuminate\Support\ServiceProvider;
 
 class WeatherserviceProvider extends ServiceProvider {
@@ -17,5 +19,9 @@ class WeatherserviceProvider extends ServiceProvider {
 
     public function register()
     {
+        $this->app->singleton('Weather', function()
+        {
+            return new Weather();
+        });
     }
 }
