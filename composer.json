@@ -1,5 +1,5 @@
 {
-    "name": "bioudi/laravel-weather",
+    "name": "bioudi/laravel-meta-weather-api",
     "license": "MIT",
     "authors": [
         {
@@ -9,7 +9,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Bioudi\\LaravelWeather\\": "src/"
+            "Bioudi\\LaravelMetaWeatherApi\\": "src/"
         }
     },
     "require": {
