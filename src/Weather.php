@@ -43,7 +43,7 @@ class Weather
         if(!is_null($date)){
             $woeid .= '/'.$date;
         }
-        $response = $this->client->request('GET', $woeid);
+        $response = $this->client->request('GET', ''.$woeid);
         if($response->getStatusCode() == 200){
             return  json_decode($response->getBody()->getContents());
         }
