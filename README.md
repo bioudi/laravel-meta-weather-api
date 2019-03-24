@@ -26,7 +26,7 @@ Register the provider directly in your app configuration file config/app.php `co
 ## Usage
 ```php
 use \Bioudi\LaravelWeather\Weather
-$weather = new \Bioudi\LaravelWeather\Weather();
+$weather = new Weather();
 ```
 ### Search by city name
 ```php
