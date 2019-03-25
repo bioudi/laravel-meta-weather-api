@@ -121,11 +121,11 @@ $weather->getByCityName('london', '2018/03/03')
 ```
 ### Search by coordinates
 ```php
-$weather->getByCoordinates('paris')
+$weather->getByCoordinates(36.96, -122.02)
 ```
 ### Search by coordinates and date
 ```php
-$weather->getByCoordinates('new york', '2018/01/01')
+$weather->getByCoordinates(36.96, -122.02, '2018/01/01')
 ```
 ## Credits
 - Thanks to [MetaWeather](https://www.metaweather.com/) for providing an Open API to the Internet.
