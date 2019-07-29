@@ -30,7 +30,7 @@ $weather = new Weather();
 ```
 ### Search by city name
 ```php
-$weather->getByCityName('casablanca')
+$weather->getByCityName('casablanca');
 ```
 #### Output
 ```json
@@ -117,15 +117,15 @@ $weather->getByCityName('casablanca')
 ```
 ### Search by city name and date
 ```php
-$weather->getByCityName('london', '2018/03/03')
+$weather->getByCityName('london', '2018/03/03');
 ```
 ### Search by coordinates
 ```php
-$weather->getByCoordinates(36.96, -122.02)
+$weather->getByCoordinates(36.96, -122.02);
 ```
 ### Search by coordinates and date
 ```php
-$weather->getByCoordinates(36.96, -122.02, '2018/01/01')
+$weather->getByCoordinates(36.96, -122.02, '2018/01/01');
 ```
 ## Credits
 - Thanks to [MetaWeather](https://www.metaweather.com/) for providing an Open API to the Internet.
