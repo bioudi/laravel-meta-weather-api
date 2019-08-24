@@ -8,7 +8,13 @@
 
 namespace Bioudi\LaravelMetaWeatherApi;
 
+use Bioudi\LaravelMetaWeatherApi\Src\Exceptions\LaravelMetaWeatherApiException;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ServerException;
+use GuzzleHttp\Exception\TooManyRedirectsException;
 
 class Weather
 {
@@ -24,15 +30,19 @@ class Weather
     }
 
     private function getWoeid($query){
-        $response = $this->client->request('GET', 'search/?query='.$query);
-        if($response->getStatusCode() == 200){
-            $result = json_decode($response->getBody()->getContents());
-            if (count($result) > 0){
-                return $result[0]->woeid;
+        try{
+            $response = $this->client->request('GET', 'search/?query='.$query);
+            if($response->getStatusCode() == 200){
+                $result = json_decode($response->getBody()->getContents());
+                if (count($result) > 0){
+                    return $result[0]->woeid;
+                }
+                return 'No result found !';
             }
-            return 'No result found !';
+        } 
+        catch (ClientException | RequestException | ConnectException | ServerException | TooManyRedirectsException $e) {
+            throw new LaravelMetaWeatherApiException($e->getMessage());
         }
-        return 'Api service responds with '.$response->getStatusCode().' !';
     }
 
     private function getWeather($query, $date){
@@ -43,11 +53,14 @@ class Weather
         if(!is_null($date)){
             $woeid .= '/'.$date;
         }
-        $response = $this->client->request('GET', ''.$woeid);
-        if($response->getStatusCode() == 200){
-            return  json_decode($response->getBody()->getContents());
+        try{
+            $response = $this->client->request('GET', ''.$woeid);
+            if($response->getStatusCode() == 200){
+                return  json_decode($response->getBody()->getContents());
+            }
+        } catch (ClientException | RequestException | ConnectException | ServerException | TooManyRedirectsException $e) {
+            throw new LaravelMetaWeatherApiException($e->getMessage());
         }
-        return 'Api service responds with '.$response->getStatusCode().' !';
     }
 
 
