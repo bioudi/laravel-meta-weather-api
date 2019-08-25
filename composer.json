@@ -1,5 +1,6 @@
 {
     "name": "bioudi/laravel-meta-weather-api",
+    "description": "🌦 Simple laravel package Consume the MetaWeather API.",
     "license": "MIT",
     "authors": [
         {
